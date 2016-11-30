@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {StatDTO} from "../stat-dto";
-import {Http} from "@angular/http";
+import {Http, Response} from "@angular/http";
+import {STATDTO} from "../mock-heroes"
 
 @Injectable()
 export class StatDataService {
@@ -11,14 +12,28 @@ export class StatDataService {
     };
 
     getStatData(): Promise<StatDTO> {
-        return this.http.get(this.statUrl)
+        var vari  =  this.http.get(this.statUrl)
             .toPromise()
+            // .then(response => STATDTO)
             .then(response => response.json().data as StatDTO)
             .catch(this.handleError);
+        console.log(vari);
+
+        return vari;
     }
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        window.alert("ERROR")
-        return Promise.reject(error.message || error);
+
+    private handleError(error: Response | any) {
+        // In a real world app, we might use a remote logging infrastructure
+        let errMsg: string;
+        if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        window.alert(errMsg);
+        // return Observable.throw(errMsg);
     }
+
 }

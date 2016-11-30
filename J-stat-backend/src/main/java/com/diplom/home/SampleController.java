@@ -39,9 +39,7 @@ public class SampleController {
         statDTO.setRowHeaders(new String[]{"UK", "USA", "UKR", "POL", "IND"});
         statDTO.setColumnHeaders(new String[]{"co2", "gdp", "ppl", "army"});
 
-        RealDTO realDto = new RealDTO();
-        realDto.setStatDto(statDTO);
-        return realDto;
+        return new RealDTO(statDTO);
     }
 
     @RequestMapping("/heroes")

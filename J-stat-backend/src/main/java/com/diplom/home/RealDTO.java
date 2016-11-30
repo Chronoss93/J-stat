@@ -6,11 +6,15 @@ package com.diplom.home;
 public class RealDTO {
     private StatDTO data;
 
-    public StatDTO getStatDto() {
+    public RealDTO(StatDTO data) {
+        this.data = data;
+    }
+
+    public StatDTO getData() {
         return data;
     }
 
-    public void setStatDto(StatDTO data) {
+    public void setData(StatDTO data) {
         this.data = data;
     }
 }

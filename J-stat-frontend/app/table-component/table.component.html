@@ -1,19 +1,18 @@
-<table class="table table-striped">
-    <thead>
-    <input type="button" class="btn-danger" (click)="someMeth()"/>
+<div *ngIf="metricsTableData">
+    <table class="table table-striped">
+        <thead>
+        <input type="button" class="btn-danger" (click)="someMeth()"/>
 
-    <tr>
-        <th>country</th>
-        <th *ngFor="let item of metricsTableData.columnHeaders">{{item}}</th>
-        <th>population</th>
-        <th>co2</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let kyfRow of metricsTableData.kyf">
-        <td *ngFor="let kyf of kyfRow">{{ kyf }}</td>
-    </tr>
-
-    </tbody>
-</table>
-<!--<h1>DATA:{{metricsTableData}}</h1>-->
+        <tr >
+            <th>country</th>
+            <th *ngFor="let item of metricsTableData.columnHeaders">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let kyfRow of metricsTableData.kyf; let i=index">
+            <td>{{metricsTableData.rowHeaders[i]}}</td>
+            <td *ngFor="let kyf of kyfRow">{{ kyf }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

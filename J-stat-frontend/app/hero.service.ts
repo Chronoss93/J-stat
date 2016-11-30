@@ -13,34 +13,37 @@ export class HeroService {
     };
 
     getHeroes(): Promise<Hero[]> {
-        return this.http.get(this.heroesUrl)
+        var statDto = this.http.get(this.heroesUrl)
             .toPromise()
             .then(response => response.json().data as Hero[])
             .catch(this.handleError);
-    }
+        console.log(statDto);
 
-    get(): Observable<Hero[]> {
-        return this.http
-            .get(this.heroesUrl, {headers: this.getHeaders()})
-            .map(mapPersons);
+        return statDto;
     }
-
-    getHeroesSlowly(): Promise<Hero[]> {
-        return new Promise<Hero[]>(resolve =>
-            setTimeout(resolve, 2000)) // delay 2 seconds
-            .then(() => this.getHeroes());
-    }
+    //
+    // get(): Observable<Hero[]> {
+    //     return this.http
+    //         .get(this.heroesUrl, {headers: this.getHeaders()})
+    //         .map(mapPersons);
+    // }
+    //
+    // getHeroesSlowly(): Promise<Hero[]> {
+    //     return new Promise<Hero[]>(resolve =>
+    //         setTimeout(resolve, 2000)) // delay 2 seconds
+    //         .then(() => this.getHeroes());
+    // }
 
     getHero(id: number): Promise<Hero> {
         return this.getHeroes()
             .then(heroes => heroes.find(hero => hero.id === id));
     }
-
-    private getHeaders() {
-        let headers = new Headers();
-        headers.append('Accept', 'application/json');
-        return headers;
-    }
+    //
+    // private getHeaders() {
+    //     let headers = new Headers();
+    //     headers.append('Accept', 'application/json');
+    //     return headers;
+    // }
 
     private handleError (error: Response | any) {
             // In a real world app, we might use a remote logging infrastructure
@@ -57,23 +60,23 @@ export class HeroService {
         }
 }
 
-function mapPersons(response: Response): Hero[] {
-    // The response of the API has a results
-    // property with the actual results
-    return response.json().results.map(toPerson)
-}
+// function mapPersons(response: Response): Hero[] {
+//     // The response of the API has a results
+//     // property with the actual results
+//     return response.json().results.map(toPerson)
+// }
+// //
+// function toPerson(r: any): Hero {
+//     let hero = <Hero>({
+//         id: r.id,
+//         name: r.name,
+//     });
+//     console.log('Parsed person:', hero);
+//     return hero;
+// }
 
-function toPerson(r: any): Hero {
-    let hero = <Hero>({
-        id: r.id,
-        name: r.name,
-    });
-    console.log('Parsed person:', hero);
-    return hero;
-}
-
-
-function mapPerson(response: Response): Hero {
-    // toPerson looks just like in the previous example
-    return toPerson(response.json());
-}
+//
+// function mapPerson(response: Response): Hero {
+//     // toPerson looks just like in the previous example
+//     return toPerson(response.json());
+// }

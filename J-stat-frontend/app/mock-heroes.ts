@@ -1,4 +1,5 @@
 import {Hero} from "./hero";
+import {StatDTO} from "./stat-dto";
 
 export const HEROES: Hero[] = [
     {id: 11, name: 'Mr. Nice'},
@@ -13,40 +14,8 @@ export const HEROES: Hero[] = [
     {id: 20, name: 'Tornado'}
 ];
 
-export const statTableData = [
-    {
-        country: 'UK',
-        gdp: 1,
-        population: 100,
-        co2: 50
-    }, {
-        country: 'UK',
-        gdp: 1,
-        population: 100,
-        co2: 50
-    },
-    {
-        country: 'USA',
-        gdp: 2,
-        population: 100,
-        co2: 50
-    },
-    {
-        country: 'UKR',
-        gdp: 10,
-        population: 100,
-        co2: 50
-    },
-    {
-        country: 'POL',
-        gdp: 11,
-        population: 100,
-        co2: 50
-    },
-    {
-        country: 'BEL',
-        gdp: 300,
-        population: 100,
-        co2: 50
-    },
-];
+export const STATDTO: StatDTO = {
+    kyf: [['0', '1', '2'], ['2', '3', '4']],
+    rowHeaders: ["owe", "me"],
+    columnHeaders: ["one", "two", "three"]
+};
