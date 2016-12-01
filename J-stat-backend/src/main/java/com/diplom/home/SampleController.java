@@ -1,9 +1,8 @@
 package com.diplom.home;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SampleController {
@@ -47,6 +46,24 @@ public class SampleController {
     @CrossOrigin
     MyDro heroes() {
         return new MyDro(new Hero[]{new Hero(1, "Igor"), new Hero(2, "Slava")});
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    String handleFileUpload(@RequestParam("file") MultipartFile file/*, HttpSession session*/){
+//        if (file.isEmpty())
+//            throw new UploadException("UP_01", "Failed to upload because the file is empty.");
+        try {
+            String text = org.apache.commons.io.IOUtils.toString(file.getInputStream());
+            System.out.println(text);
+//            StatisticViewDto dto = dataConverter.parseMessage(text);
+//            session.setAttribute("statisticView", dto);
+//            return new ModelAndView("data_overview").addObject("statisticView", dto);
+        } catch (Exception e) {
+//            throw new UploadException("UP_02", "Failed to process csv. Wrong format");
+        }
+        return "Success";
     }
 
 }
