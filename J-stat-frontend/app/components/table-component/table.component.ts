@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {StatDataService} from "./stat-data.service";
-import {StatDTO} from "../stat-dto";
+import {StatDTO} from "../../domain/stat-dto";
 
 @Component({
     moduleId: module.id,

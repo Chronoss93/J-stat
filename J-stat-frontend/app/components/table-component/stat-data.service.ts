@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
-import {StatDTO} from "../stat-dto";
+import {StatDTO} from "../../domain/stat-dto";
 import {Http, Response} from "@angular/http";
-import {STATDTO} from "../mock-heroes"
+import {STATDTO} from "../../services/mock-heroes"
 
 @Injectable()
 export class StatDataService {
@@ -12,14 +12,14 @@ export class StatDataService {
     };
 
     getStatData(): Promise<StatDTO> {
-        var vari  =  this.http.get(this.statUrl)
+        var promiseStatDTO  =  this.http.get(this.statUrl)
             .toPromise()
             // .then(response => STATDTO)
             .then(response => response.json().data as StatDTO)
             .catch(this.handleError);
-        console.log(vari);
+        // console.log(promiseStatDTO);
 
-        return vari;
+        return promiseStatDTO;
     }
 
     private handleError(error: Response | any) {

@@ -1,5 +1,5 @@
-import {Hero} from "./hero";
-import {StatDTO} from "./stat-dto";
+import {Hero} from "../domain/hero";
+import {StatDTO} from "../domain/stat-dto";
 
 export const HEROES: Hero[] = [
     {id: 11, name: 'Mr. Nice'},

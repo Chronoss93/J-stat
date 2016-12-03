@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {DashboardComponent} from "./dashboard.component/dashboard.component";
-import {HeroesComponent} from "./heroes-component/heroes.component";
-import {HeroDetailComponent} from "./hero-detail-component/hero-detail.component";
-import {TableComponent} from "./table-component/table.component";
-import {UploadComponent} from "./upload-component/upload.component";
+import {DashboardComponent} from "./components/dashboard.component/dashboard.component";
+import {HeroesComponent} from "./components/heroes-component/heroes.component";
+import {HeroDetailComponent} from "./components/hero-detail-component/hero-detail.component";
+import {TableComponent} from "./components/table-component/table.component";
+import {UploadComponent} from "./components/upload-component/upload.component";
 
 const routes: Routes = [
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
