@@ -1,20 +1,15 @@
 package com.diplom.domain;
 
-import org.springframework.data.annotation.Id;
-
 /**
  * Created by Igor on 03.12.2016.
  */
 public class KYF {
 
-    @Id
-    private String id;
     private long rowNo;
     private long columnNo;
     private String value;
     private Row row;
     private Column column;
-    private Table table;
 
     public KYF() {
     }
@@ -23,22 +18,6 @@ public class KYF {
         this.rowNo = rowNo;
         this.columnNo = columnNo;
         this.value = value;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Table getTable() {
-        return table;
-    }
-
-    public void setTable(Table table) {
-        this.table = table;
     }
 
     public long getRowNo() {

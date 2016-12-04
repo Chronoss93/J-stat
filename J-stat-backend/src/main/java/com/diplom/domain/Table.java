@@ -1,6 +1,7 @@
 package com.diplom.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.List;
 
@@ -16,13 +17,6 @@ public class Table {
     private List<List<KYF>> kyfMatrix;
 
     public Table() {
-    }
-
-    public Table(String name, List<Row> rows, List<Column> columns, List<List<KYF>> kyfMatrix) {
-        this.name = name;
-        this.rows = rows;
-        this.columns = columns;
-        this.kyfMatrix = kyfMatrix;
     }
 
     public Table(String name) {

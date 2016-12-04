@@ -2,9 +2,12 @@ package com.diplom.web.controller;
 
 import com.diplom.home.Hero;
 import com.diplom.home.MyDro;
+import com.diplom.repository.TableRepository;
 import com.diplom.service.CsvDataHandler;
 import com.diplom.service.StatDataService;
-import com.diplom.service.dto.StatDto;
+import com.diplom.service.dto.OneTableDto;
+import com.diplom.web.controller.dto.StatDto;
+import com.diplom.web.controller.dto.TableArrayDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,8 @@ public class SampleController {
     CsvDataHandler csvDataHandler;
     @Autowired
     StatDataService statDataService;
+    @Autowired
+    TableRepository tableRepository;
 
     @RequestMapping("/")
     @ResponseBody
@@ -29,7 +34,17 @@ public class SampleController {
     @ResponseBody
     @CrossOrigin
     StatDto getStat() {
-        return statDataService.getStatForTable("test");
+        return new StatDto(statDataService.getStatForTable("table_1"));
+    }
+
+    @RequestMapping("/getTables")
+    @ResponseBody
+    @CrossOrigin
+    TableArrayDto getTables() {
+        return new TableArrayDto(new OneTableDto[]{
+                statDataService.getStatForTable("table_1"),
+                statDataService.getStatForTable("TABLE_2")
+        });
     }
 
     @RequestMapping("/heroes")

@@ -40,7 +40,7 @@ public class TableRepositoryMock {
                 KYF kyf = new KYF(row.getRowNo(), column.getColumnNo(), row.getRowNo() + " " + column.getColumnNo());
                 kyf.setRow(row);
                 kyf.setColumn(column);
-                kyf.setTable(table);
+//                kyf.setTable(table);
                 kyfRow.add(kyf);
             }
             result.add(kyfRow);
@@ -50,15 +50,15 @@ public class TableRepositoryMock {
 
     private ArrayList<Column> generateColumnsForTable(Table table) {
         return new ArrayList<Column>() {{
-            add(new Column(table, "col1", 1));
-            add(new Column(table, "col2", 2));
+            add(new Column("col1", 1));
+            add(new Column("col2", 2));
         }};
     }
 
     private ArrayList<Row> generateRowsForTable(Table table) {
         return new ArrayList<Row>() {{
-            add(new Row(table, "row1", 1));
-            add(new Row(table, "row2", 2));
+            add(new Row( "row1", 1));
+            add(new Row( "row2", 2));
         }};
     }
 
