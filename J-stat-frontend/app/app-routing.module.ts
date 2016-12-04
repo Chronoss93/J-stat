@@ -13,7 +13,7 @@ const routes: Routes = [
     {path: 'detail/:id', component: HeroDetailComponent},
     {path: 'heroes', component: HeroesComponent},
     {path: 'upload', component: UploadComponent},
-    {path: 'table', component: TableComponent},
+    {path: 'table/:id', component: TableComponent},
     {path: 'allTables', component: TableListComponent}
 
 ];

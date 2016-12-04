@@ -32,8 +32,8 @@ export class TableListComponent implements OnInit {
         this.selectedTable = table;
         console.log(this.tables);
     }
-    //
-    // gotoDetail(): void {
-    //     this.router.navigate(['/detail', this.selectedHero.id]);
-    // }
+
+    gotoDetail(): void {
+        this.router.navigate(['/table', this.selectedTable.tableName]);
+    }
 }

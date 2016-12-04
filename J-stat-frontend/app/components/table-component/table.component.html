@@ -2,8 +2,6 @@
     <h1 class="page-header">{{table.tableName}}</h1>
     <table class="table table-striped">
         <thead>
-        <input type="button" class="btn-danger" (click)="someMeth()"/>
-
         <tr >
             <th>country</th>
             <th *ngFor="let item of table.columnHeaders">{{item}}</th>
@@ -16,4 +14,5 @@
         </tr>
         </tbody>
     </table>
+    <input type="button" class="btn-danger" (click)="someMeth()"/>
 </div>

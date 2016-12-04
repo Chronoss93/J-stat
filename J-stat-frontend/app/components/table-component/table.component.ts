@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
+import {Location} from "@angular/common";
 import {StatDataService} from "../../services/stat-data.service";
 import {TableDTO} from "../../domain/table-dto";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -13,15 +15,27 @@ export class TableComponent implements OnInit {
 
     table: TableDTO;
 
-    constructor(private statDataService: StatDataService) {
+    constructor(private statDataService: StatDataService,
+                private route: ActivatedRoute,
+                private location: Location) {
     }
 
     ngOnInit(): void {
+
         this.getStatData();
     }
 
     private getStatData() {
-        this.statDataService.getStatData().then(data => this.table = data);
+        this.route.params.forEach((params: Params) => {
+            var id = params['id'];
+            this.statDataService.getTable(id)
+                .then(table => this.table = table);
+        });
+        // this.statDataService.getStatData().then(data => this.table = data);
+    }
+
+    goBack(): void {
+        this.location.back();
     }
     someMeth(){
         window.alert(this.table);

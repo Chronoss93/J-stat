@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class Table {
     @Id
-    private String id;
     private String name;
     private List<Row> rows;
     private List<Column> columns;
@@ -21,15 +20,6 @@ public class Table {
 
     public Table(String name) {
         this.name = name;
-    }
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

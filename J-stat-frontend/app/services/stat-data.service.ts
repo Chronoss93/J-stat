@@ -5,19 +5,19 @@ import {Http, Response} from "@angular/http";
 @Injectable()
 export class StatDataService {
 
-    private statUrl = 'http://localhost:8080/getStat';
-    private tablesUrl = 'http://localhost:8080/getTables';
+    private tableUrl = 'http://localhost:8080/table';
+    private tablesUrl = 'http://localhost:8080/tables';
 
     constructor(private http: Http) {
     };
 
-    getStatData(): Promise<TableDTO> {
-
-        return this.http.get(this.statUrl)
-            .toPromise()
-            .then(response => response.json().data as TableDTO)
-            .catch(this.handleError);
-    }
+    // getStatData(): Promise<TableDTO> {
+    //
+    //     return this.http.get(this.statUrl)
+    //         .toPromise()
+    //         .then(response => response.json().data as TableDTO)
+    //         .catch(this.handleError);
+    // }
 
     getAllTables(): Promise<TableDTO[]> {
         var tables = this.http.get(this.tablesUrl)
@@ -27,6 +27,11 @@ export class StatDataService {
         console.log(tables);
 
         return tables;
+    }
+
+    getTable(id: string): Promise<TableDTO> {
+        return this.getAllTables()
+            .then(tables => tables.find(table => table.tableName === id));
     }
 
     private handleError(error: Response | any) {

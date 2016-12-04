@@ -30,14 +30,14 @@ public class SampleController {
         return "Hello World!";
     }
 
-    @RequestMapping("/getStat")
+    @RequestMapping("/table")
     @ResponseBody
     @CrossOrigin
-    StatDto getStat() {
-        return new StatDto(statDataService.getStatForTable("table_1"));
+    StatDto getTable(@RequestParam("id") String tableId) {
+        return new StatDto(statDataService.getStatForTable(tableId));
     }
 
-    @RequestMapping("/getTables")
+    @RequestMapping("/tables")
     @ResponseBody
     @CrossOrigin
     TableArrayDto getTables() {
