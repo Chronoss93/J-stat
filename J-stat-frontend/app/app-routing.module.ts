@@ -5,6 +5,7 @@ import {HeroesComponent} from "./components/heroes-component/heroes.component";
 import {HeroDetailComponent} from "./components/hero-detail-component/hero-detail.component";
 import {TableComponent} from "./components/table-component/table.component";
 import {UploadComponent} from "./components/upload-component/upload.component";
+import {TableListComponent} from "./components/table-list-component/table.list.component";
 
 const routes: Routes = [
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
     {path: 'detail/:id', component: HeroDetailComponent},
     {path: 'heroes', component: HeroesComponent},
     {path: 'upload', component: UploadComponent},
-    {path: 'table', component: TableComponent}
+    {path: 'table', component: TableComponent},
+    {path: 'allTables', component: TableListComponent}
 
 ];
 @NgModule({

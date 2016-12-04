@@ -1,5 +1,5 @@
 import {Hero} from "../domain/hero";
-import {StatDTO} from "../domain/stat-dto";
+import {TableDTO} from "../domain/table-dto";
 
 export const HEROES: Hero[] = [
     {id: 11, name: 'Mr. Nice'},
@@ -14,8 +14,8 @@ export const HEROES: Hero[] = [
     {id: 20, name: 'Tornado'}
 ];
 
-export const STATDTO: StatDTO = {
-    kyf: [['0', '1', '2'], ['2', '3', '4']],
-    rowHeaders: ["owe", "me"],
-    columnHeaders: ["one", "two", "three"]
-};
+// export const STATDTO: TableDTO = {
+//     kyf: [['0', '1', '2'], ['2', '3', '4']],
+//     rowHeaders: ["owe", "me"],
+//     columnHeaders: ["one", "two", "three"]
+// };

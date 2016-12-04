@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {StatDataService} from "./stat-data.service";
-import {StatDTO} from "../../domain/stat-dto";
+import {StatDataService} from "../../services/stat-data.service";
+import {TableDTO} from "../../domain/table-dto";
 
 @Component({
     moduleId: module.id,
@@ -11,7 +11,7 @@ import {StatDTO} from "../../domain/stat-dto";
 })
 export class TableComponent implements OnInit {
 
-    metricsTableData: StatDTO;
+    table: TableDTO;
 
     constructor(private statDataService: StatDataService) {
     }
@@ -21,11 +21,11 @@ export class TableComponent implements OnInit {
     }
 
     private getStatData() {
-        this.statDataService.getStatData().then(data => this.metricsTableData = data);
+        this.statDataService.getStatData().then(data => this.table = data);
     }
     someMeth(){
-        window.alert(this.metricsTableData);
-        console.log(this.metricsTableData.columnHeaders);
+        window.alert(this.table);
+        console.log(this.table.columnHeaders);
     }
 
 }

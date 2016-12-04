@@ -1,25 +1,32 @@
 import {Injectable} from "@angular/core";
-import {StatDTO} from "../../domain/stat-dto";
+import {TableDTO} from "../domain/table-dto";
 import {Http, Response} from "@angular/http";
-import {STATDTO} from "../../services/mock-heroes"
 
 @Injectable()
 export class StatDataService {
 
     private statUrl = 'http://localhost:8080/getStat';
+    private tablesUrl = 'http://localhost:8080/getTables';
 
     constructor(private http: Http) {
     };
 
-    getStatData(): Promise<StatDTO> {
-        var promiseStatDTO  =  this.http.get(this.statUrl)
-            .toPromise()
-            // .then(response => STATDTO)
-            .then(response => response.json().data as StatDTO)
-            .catch(this.handleError);
-        // console.log(promiseStatDTO);
+    getStatData(): Promise<TableDTO> {
 
-        return promiseStatDTO;
+        return this.http.get(this.statUrl)
+            .toPromise()
+            .then(response => response.json().data as TableDTO)
+            .catch(this.handleError);
+    }
+
+    getAllTables(): Promise<TableDTO[]> {
+        var tables = this.http.get(this.tablesUrl)
+            .toPromise()
+            .then(response => response.json().data as TableDTO[])
+            .catch(this.handleError);
+        console.log(tables);
+
+        return tables;
     }
 
     private handleError(error: Response | any) {

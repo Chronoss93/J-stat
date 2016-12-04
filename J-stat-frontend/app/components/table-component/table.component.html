@@ -1,16 +1,17 @@
-<div *ngIf="metricsTableData">
+<div *ngIf="table">
+    <h1 class="page-header">{{table.tableName}}</h1>
     <table class="table table-striped">
         <thead>
         <input type="button" class="btn-danger" (click)="someMeth()"/>
 
         <tr >
             <th>country</th>
-            <th *ngFor="let item of metricsTableData.columnHeaders">{{item}}</th>
+            <th *ngFor="let item of table.columnHeaders">{{item}}</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let kyfRow of metricsTableData.kyf; let i=index">
-            <td>{{metricsTableData.rowHeaders[i]}}</td>
+        <tr *ngFor="let kyfRow of table.kyf; let i=index">
+            <td>{{table.rowHeaders[i]}}</td>
             <td *ngFor="let kyf of kyfRow">{{ kyf }}</td>
         </tr>
         </tbody>
