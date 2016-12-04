@@ -1,5 +1,7 @@
 package com.diplom.domain;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 
 /**
@@ -7,11 +9,12 @@ import java.util.List;
  */
 public class Column {
 
+    @Id
     private long id;
     private Table table;
     private String name;
     private long columnNo;
-    private List<KYF> kyfs;
+//    private List<KYF> kyfs;
 
     public Column(String name, long columnNo) {
         this.name = name;
@@ -57,11 +60,11 @@ public class Column {
         this.columnNo = columnNo;
     }
 
-    public List<KYF> getKyfs() {
-        return kyfs;
-    }
-
-    public void setKyfs(List<KYF> kyfs) {
-        this.kyfs = kyfs;
-    }
+//    public List<KYF> getKyfs() {
+//        return kyfs;
+//    }
+//
+//    public void setKyfs(List<KYF> kyfs) {
+//        this.kyfs = kyfs;
+//    }
 }

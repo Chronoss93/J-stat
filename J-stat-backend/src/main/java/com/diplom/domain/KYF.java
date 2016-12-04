@@ -1,10 +1,13 @@
 package com.diplom.domain;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * Created by Igor on 03.12.2016.
  */
 public class KYF {
 
+    @Id
     private long id;
     private long rowNo;
     private long columnNo;

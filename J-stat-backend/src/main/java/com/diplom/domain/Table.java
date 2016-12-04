@@ -1,11 +1,14 @@
 package com.diplom.domain;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 
 /**
  * Created by Igor on 03.12.2016.
  */
 public class Table {
+    @Id
     private long id;
     private String name;
     private List<Row> rows;
