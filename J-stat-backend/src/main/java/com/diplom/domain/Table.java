@@ -9,11 +9,14 @@ import java.util.List;
  */
 public class Table {
     @Id
-    private long id;
+    private String id;
     private String name;
     private List<Row> rows;
     private List<Column> columns;
     private List<List<KYF>> kyfMatrix;
+
+    public Table() {
+    }
 
     public Table(String name, List<Row> rows, List<Column> columns, List<List<KYF>> kyfMatrix) {
         this.name = name;
@@ -27,11 +30,11 @@ public class Table {
     }
 
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

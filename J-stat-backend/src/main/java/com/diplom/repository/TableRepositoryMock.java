@@ -4,7 +4,6 @@ import com.diplom.domain.Column;
 import com.diplom.domain.KYF;
 import com.diplom.domain.Row;
 import com.diplom.domain.Table;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.List;
 /**
  * Created by Igor on 03.12.2016.
  */
-@Repository
-public class TableRepositoryImpl implements TableRepository{
+//@Repository
+public class TableRepositoryMock {
     public void persist(Table table) {
         return;
     }

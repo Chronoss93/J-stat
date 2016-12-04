@@ -10,11 +10,13 @@ import java.util.List;
 public class Row {
 
     @Id
-    private long id;
+    private String id;
     private Table table;
     private String name;
     private long rowNo;
-//    private List<KYF> kyfs;
+
+    public Row() {
+    }
 
     public Row(String name, long rowNo) {
         this.name = name;
@@ -44,11 +46,11 @@ public class Row {
         this.name = name;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -5,8 +5,9 @@ import com.diplom.domain.KYF;
 import com.diplom.domain.Row;
 import com.diplom.domain.Table;
 import com.diplom.repository.TableRepository;
-import com.diplom.repository.TableRepositoryImpl;
+//import com.diplom.repository.TableRepositoryMock;
 import com.diplom.service.CsvDataHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -22,6 +23,7 @@ import java.util.List;
 public class CsvDataHandlerImpl implements CsvDataHandler {
 
     private static final String DELIMITER = ";";
+    @Autowired
     private TableRepository tableRepository;
 
     @Override
@@ -59,7 +61,7 @@ public class CsvDataHandlerImpl implements CsvDataHandler {
         }
         Table table = constructTable(tableName, rows, columns, kyfMatrix);
 
-        tableRepository.persist(table);
+        tableRepository.save(table);
         System.out.println("construct finished");
     }
 

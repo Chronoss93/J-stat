@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 public class KYF {
 
     @Id
-    private long id;
+    private String id;
     private long rowNo;
     private long columnNo;
     private String value;
@@ -16,17 +16,20 @@ public class KYF {
     private Column column;
     private Table table;
 
+    public KYF() {
+    }
+
     public KYF(long rowNo, long columnNo, String value) {
         this.rowNo = rowNo;
         this.columnNo = columnNo;
         this.value = value;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
