@@ -1,4 +1,4 @@
-package com.diplom.home;
+package com.diplom.web.controller.trash;
 
 /**
  * Created by Igor on 13.11.2016.

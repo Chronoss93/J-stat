@@ -1,4 +1,4 @@
-package com.diplom.web.controller.dto;
+package com.diplom.web.dto;
 
 import com.diplom.service.dto.OneTableDto;
 

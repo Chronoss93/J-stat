@@ -1,13 +1,13 @@
 package com.diplom.web.controller;
 
-import com.diplom.home.Hero;
-import com.diplom.home.MyDro;
+import com.diplom.web.controller.trash.Hero;
+import com.diplom.web.controller.trash.MyDro;
 import com.diplom.repository.TableRepository;
 import com.diplom.service.CsvDataHandler;
 import com.diplom.service.StatDataService;
 import com.diplom.service.dto.OneTableDto;
-import com.diplom.web.controller.dto.StatDto;
-import com.diplom.web.controller.dto.TableArrayDto;
+import com.diplom.web.dto.StatDto;
+import com.diplom.web.dto.TableArrayDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

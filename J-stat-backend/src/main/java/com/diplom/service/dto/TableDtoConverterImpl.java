@@ -4,7 +4,6 @@ import com.diplom.domain.Column;
 import com.diplom.domain.KYF;
 import com.diplom.domain.Row;
 import com.diplom.domain.Table;
-import com.diplom.web.controller.dto.StatDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
  * Created by Igor on 04.12.2016.
  */
 @Service
-public class StatDtoConvertorImpl implements StatDtoConvertor {
+public class TableDtoConverterImpl implements TableDtoConverter {
 
     @Override
     public OneTableDto convert(Table table) {
