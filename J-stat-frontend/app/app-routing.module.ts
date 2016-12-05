@@ -14,7 +14,8 @@ const routes: Routes = [
     {path: 'heroes', component: HeroesComponent},
     {path: 'upload', component: UploadComponent},
     {path: 'table/:id', component: TableComponent},
-    {path: 'allTables', component: TableListComponent}
+    {path: 'allTables', component: TableListComponent},
+    {path: 'table', component: TableListComponent}
 
 ];
 @NgModule({

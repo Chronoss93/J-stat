@@ -8,4 +8,6 @@ import com.diplom.service.dto.OneTableDto;
 public interface StatDataService {
 
     OneTableDto getStatForTable(String tableName);
+
+    OneTableDto[] getAllTables();
 }

@@ -1,11 +1,10 @@
 package com.diplom.web.controller;
 
-import com.diplom.web.controller.trash.Hero;
-import com.diplom.web.controller.trash.MyDro;
 import com.diplom.repository.TableRepository;
 import com.diplom.service.CsvDataHandler;
 import com.diplom.service.StatDataService;
-import com.diplom.service.dto.OneTableDto;
+import com.diplom.web.controller.trash.Hero;
+import com.diplom.web.controller.trash.MyDro;
 import com.diplom.web.dto.StatDto;
 import com.diplom.web.dto.TableArrayDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +40,7 @@ public class SampleController {
     @ResponseBody
     @CrossOrigin
     TableArrayDto getTables() {
-        return new TableArrayDto(new OneTableDto[]{
-                statDataService.getStatForTable("table_1"),
-                statDataService.getStatForTable("TABLE_2")
-        });
+        return new TableArrayDto(statDataService.getAllTables());
     }
 
     @RequestMapping("/heroes")

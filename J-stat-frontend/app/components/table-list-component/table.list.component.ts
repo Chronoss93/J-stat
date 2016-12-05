@@ -14,7 +14,6 @@ import {TableDTO} from "../../domain/table-dto";
 export class TableListComponent implements OnInit {
 
     tables: TableDTO[];
-    selectedTable: TableDTO;
 
     constructor(private router: Router,
                 private statDataService: StatDataService) {
@@ -28,12 +27,7 @@ export class TableListComponent implements OnInit {
         this.statDataService.getAllTables().then(tables => this.tables = tables);
     }
 
-    onSelect(table: TableDTO): void {
-        this.selectedTable = table;
-        console.log(this.tables);
-    }
-
-    gotoDetail(): void {
-        this.router.navigate(['/table', this.selectedTable.tableName]);
+    gotoDetail(table: TableDTO): void {
+        this.router.navigate(['/table', table.tableName]);
     }
 }

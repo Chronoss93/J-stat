@@ -14,5 +14,18 @@
         </tr>
         </tbody>
     </table>
-    <input type="button" class="btn-danger" (click)="someMeth()"/>
+    <button type="button" class="btn btn-success btn-xs"
+            (click)="startAnalyze()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+        <span class="glyphicon glyphicon-upload"></span> Start analyze
+    </button>
+    <br>
+    <button type="button" class="btn btn-warning btn-xs"
+            (click)="goBack()" [disabled]="!item.isUploading">
+        <span class="glyphicon glyphicon-ban-circle"></span> back
+    </button>
+    <br>
+    <button type="button" class="btn btn-danger btn-xs"
+            (click)="deleteTable()">
+        <span class="glyphicon glyphicon-trash"></span> Remove
+    </button>
 </div>

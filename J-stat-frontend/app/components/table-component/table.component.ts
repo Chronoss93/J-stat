@@ -21,13 +21,13 @@ export class TableComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         this.getStatData();
     }
 
     private getStatData() {
         this.route.params.forEach((params: Params) => {
             var id = params['id'];
+            console.log(id);
             this.statDataService.getTable(id)
                 .then(table => this.table = table);
         });

@@ -1,4 +1,6 @@
-
+body {
+    overflow-y:hidden;
+}
 /*.my-drop-zone {*/
     /*border: dotted 3px lightgray;*/
 /*}*/

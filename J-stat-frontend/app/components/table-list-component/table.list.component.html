@@ -1,12 +1,15 @@
-<h2>My Tables</h2>
-<ul>
-    <li *ngFor="let table of tables"
-        [class.selected]="table === selectedTable"
-        (click)="onSelect(table)">
-        {{table.tableName}}
-    </li>
-</ul>
-<div *ngIf="selectedTable">
-<h2> {{selectedTable.tableName | uppercase}} statistic data </h2>
-<button (click)="gotoDetail()">View Details</button>
+<h2>All tables</h2>
+
+<div class="col-xs-6 col-lg-4" *ngFor="let table of tables">
+    <h3>{{table.tableName}}</h3>
+    <p>Some text</p>
+    <button  class="btn btn-default" (click)="gotoDetail(table)">View Details</button>
 </div>
+
+<!--<ul>-->
+    <!--<li *ngFor="let table of tables"-->
+        <!--[class.selected]="table === selectedTable"-->
+        <!--(click)="onSelect(table)">-->
+        <!--{{table.tableName}}-->
+    <!--</li>-->
+<!--</ul>-->
