@@ -25,13 +25,17 @@ public class TableDtoConverterImpl implements TableDtoConverter {
         String[][] kyfs = new String[kyfMatrix.size()][kyfMatrix.get(0).size()];
 
         for (int i = 0; i < kyfMatrix.size(); i++) {
-            kyfs[i] = getOneRowOfKyf(kyfMatrix.get(i));
+            kyfs[i] = getOneRowStringKyf(kyfMatrix.get(i));
         }
         return new OneTableDto(table.getName(), rowArray, columnArray, kyfs);
     }
 
-    private String[] getOneRowOfKyf(List<KYF> kyfs) {
+    private String[] getOneRowStringKyf(List<KYF> kyfs) {
         return kyfs.stream().map(KYF::getValue).toArray(String[]::new);
 
+    }
+    //move to another class
+    public double[] getOneRowDoubleKyf(List<KYF> kyfs) {
+        return kyfs.stream().mapToDouble(kyf -> Double.parseDouble(kyf.getValue())).toArray();
     }
 }
