@@ -1,28 +1,28 @@
 package com.diplom.service.clustering;
 
 import com.diplom.domain.KYF;
-import com.diplom.domain.Row;
 import org.apache.commons.math3.ml.clustering.Clusterable;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Igor_Kravchenko on 2/1/17.
  */
-public class KyfRowWrapper implements Clusterable {
+public class ClusterableRow implements Clusterable {
 
     private double[] points;
     private List<KYF> kyfList;
 
-    private KyfRowWrapper(){
+    private ClusterableRow(){
     }
 
-    public static KyfRowWrapper createKyfRowWrapper(List<KYF> kyfs){
-        KyfRowWrapper kyfRowWrapper = new KyfRowWrapper();
+    public static ClusterableRow createWrappedRow(List<KYF> kyfs){
+        ClusterableRow clusterableRow = new ClusterableRow();
         double[] points = getCoordinates(kyfs);
-        kyfRowWrapper.setPoints(points);
-        kyfRowWrapper.setKyfList(kyfs);
-        return kyfRowWrapper;
+        clusterableRow.setPoints(points);
+        clusterableRow.setKyfList(kyfs);
+        return clusterableRow;
     }
     private static double[] getCoordinates(List<KYF> kyfs) {
         return kyfs.stream().mapToDouble(kyf -> Double.parseDouble(kyf.getValue())).toArray();
@@ -32,8 +32,6 @@ public class KyfRowWrapper implements Clusterable {
     public double[] getPoint() {
         return points;
     }
-
-
 
     public double[] getPoints() {
         return points;
@@ -49,5 +47,12 @@ public class KyfRowWrapper implements Clusterable {
 
     public void setKyfList(List<KYF> kyfList) {
         this.kyfList = kyfList;
+    }
+
+    @Override
+    public String toString() {
+        return "ClusterableRow{" +
+                "points=" + Arrays.toString(points) +
+                '}';
     }
 }
