@@ -7,5 +7,5 @@ import com.diplom.domain.Table;
  */
 public interface TableDtoConverter {
 
-    OneTableDto convert(Table table);
+    TableAsStringDto convert(Table table);
 }

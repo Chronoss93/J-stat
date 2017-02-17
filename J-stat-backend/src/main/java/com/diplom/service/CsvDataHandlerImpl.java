@@ -28,32 +28,32 @@ public class CsvDataHandlerImpl implements CsvDataHandler {
 
     @Override
     public void handleMessage(String text) throws IOException {
-        Table table = new Table();
 
-        ejectDataFromText(text, table);
+
+        Table table = ejectTableFromText(text);
         tableRepository.save(table);
 
         System.out.println("construct finished");
     }
 
-    private void ejectDataFromText(String text, Table table) throws IOException {
+    private Table ejectTableFromText(String text) throws IOException {
+        Table table = new Table();
 
         BufferedReader textReader = new BufferedReader(new StringReader(text));
         String line = textReader.readLine();
         String[] firstRow = line.split(DELIMITER);
         String tableName = firstRow[0];
 
-        List<Column> columns = new ArrayList<>();
+        List<Column> columns = ejectColumns(firstRow);
         List<Row> rows = new ArrayList<>();
         List<List<KYF>> kyfMatrix = new ArrayList<>();
-
-        ejectColumns(firstRow, columns);
-        ejectRowsAndKyfs(textReader, rows, kyfMatrix);
+        fillRowsAndKyfs(textReader, rows, kyfMatrix);
 
         fillTable(table, tableName, rows, columns, kyfMatrix);
+        return table;
     }
 
-    private void ejectRowsAndKyfs(BufferedReader br, List<Row> rows, List<List<KYF>> kyfMatrix) throws IOException {
+    private void fillRowsAndKyfs(BufferedReader br, List<Row> rows, List<List<KYF>> kyfMatrix) throws IOException {
         String line;
         for (int rowNo = 1; (line = br.readLine()) != null; rowNo++) {
             String[] statisticRowString = line.split(DELIMITER);
@@ -70,11 +70,13 @@ public class CsvDataHandlerImpl implements CsvDataHandler {
         }
     }
 
-    private void ejectColumns(String[] firstRow, List<Column> columns) {
+    private List<Column> ejectColumns(String[] firstRow) {
+        List<Column> columns = new ArrayList<>();
         for (int columnNo = 1; columnNo < firstRow.length; columnNo++) {
             Column column = new Column(firstRow[columnNo], columnNo);
             columns.add(column);
         }
+        return columns;
     }
 
 

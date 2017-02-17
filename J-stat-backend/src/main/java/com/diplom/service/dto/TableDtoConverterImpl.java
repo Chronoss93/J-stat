@@ -15,7 +15,7 @@ import java.util.List;
 public class TableDtoConverterImpl implements TableDtoConverter {
 
     @Override
-    public OneTableDto convert(Table table) {
+    public TableAsStringDto convert(Table table) {
         List<Row> rows = table.getRows();
         String[] rowArray = rows.stream().map(Row::getName).toArray(String[]::new);
         List<Column> columns = table.getColumns();
@@ -27,7 +27,7 @@ public class TableDtoConverterImpl implements TableDtoConverter {
         for (int i = 0; i < kyfMatrix.size(); i++) {
             kyfs[i] = getOneRowStringKyf(kyfMatrix.get(i));
         }
-        return new OneTableDto(table.getName(), rowArray, columnArray, kyfs);
+        return new TableAsStringDto(table.getName(), rowArray, columnArray, kyfs);
     }
 
     private String[] getOneRowStringKyf(List<KYF> kyfs) {

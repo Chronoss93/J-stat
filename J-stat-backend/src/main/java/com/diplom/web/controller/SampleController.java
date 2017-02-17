@@ -3,10 +3,11 @@ package com.diplom.web.controller;
 import com.diplom.repository.TableRepository;
 import com.diplom.service.CsvDataHandler;
 import com.diplom.service.StatDataService;
+import com.diplom.service.dto.TableAsStringDto;
 import com.diplom.web.controller.trash.Hero;
 import com.diplom.web.controller.trash.MyDro;
-import com.diplom.web.dto.StatDto;
-import com.diplom.web.dto.TableArrayDto;
+import com.diplom.web.dto.OneTableWebDto;
+import com.diplom.web.dto.TablesWebDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,11 @@ import java.io.IOException;
 @Controller
 public class SampleController {
     @Autowired
-    CsvDataHandler csvDataHandler;
+    private CsvDataHandler csvDataHandler;
     @Autowired
-    StatDataService statDataService;
+    private StatDataService statDataService;
     @Autowired
-    TableRepository tableRepository;
+    private TableRepository tableRepository;
 
     @RequestMapping("/")
     @ResponseBody
@@ -32,15 +33,16 @@ public class SampleController {
     @RequestMapping("/table")
     @ResponseBody
     @CrossOrigin
-    StatDto getTable(@RequestParam("id") String tableId) {
-        return new StatDto(statDataService.getStatForTable(tableId));
+    OneTableWebDto getTable(@RequestParam("id") String tableId) {
+        TableAsStringDto tableAsStringDto = statDataService.getStatForTable(tableId);
+        return new OneTableWebDto(tableAsStringDto);
     }
 
     @RequestMapping("/tables")
     @ResponseBody
     @CrossOrigin
-    TableArrayDto getTables() {
-        return new TableArrayDto(statDataService.getAllTables());
+    TablesWebDto getTables() {
+        return new TablesWebDto(statDataService.getAllTables());
     }
 
     @RequestMapping("/heroes")

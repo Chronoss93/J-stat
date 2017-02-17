@@ -1,13 +1,13 @@
 package com.diplom.service;
 
-import com.diplom.service.dto.OneTableDto;
+import com.diplom.service.dto.TableAsStringDto;
 
 /**
  * Created by Igor on 03.12.2016.
  */
 public interface StatDataService {
 
-    OneTableDto getStatForTable(String tableName);
+    TableAsStringDto getStatForTable(String tableName);
 
-    OneTableDto[] getAllTables();
+    TableAsStringDto[] getAllTables();
 }

@@ -2,7 +2,7 @@ package com.diplom.service;
 
 import com.diplom.domain.Table;
 import com.diplom.repository.TableRepository;
-import com.diplom.service.dto.OneTableDto;
+import com.diplom.service.dto.TableAsStringDto;
 import com.diplom.service.dto.TableDtoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +20,16 @@ public class StatDataServiceImpl implements StatDataService {
     TableDtoConverter tableDtoConverter;
 
     @Override
-    public OneTableDto getStatForTable(String tableName) {
+    public TableAsStringDto getStatForTable(String tableName) {
         Table table = tableRepository.findByName(tableName);
         //TODO: findByName does not select Column and Row for KYF. I'm not sure that i assign them b4 saving but should check it out
         return tableDtoConverter.convert(table);
     }
 
     @Override
-    public OneTableDto[] getAllTables() {
+    public TableAsStringDto[] getAllTables() {
         List<Table> tables = tableRepository.findAll();
-        OneTableDto[] tableDtos = new OneTableDto[tables.size()];
+        TableAsStringDto[] tableDtos = new TableAsStringDto[tables.size()];
         for (int i = 0; i < tables.size(); i++) {
             tableDtos[i] = tableDtoConverter.convert(tables.get(i));
         }
